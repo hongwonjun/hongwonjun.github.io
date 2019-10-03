@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Ubuntu 에서 MySQL-python 설치시 오류 해결 | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Ubuntu 에서 MySQL-python 설치시 오류 해결" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다." />
+<meta property="og:description" content="Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다." />
+<link rel="canonical" href="http://localhost:4000/2016-06-22/ubuntu-mysql-python" />
+<meta property="og:url" content="http://localhost:4000/2016-06-22/ubuntu-mysql-python" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-06-22T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2016-06-22/ubuntu-mysql-python","headline":"Ubuntu 에서 MySQL-python 설치시 오류 해결","dateModified":"2016-06-22T00:00:00+09:00","datePublished":"2016-06-22T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016-06-22/ubuntu-mysql-python"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다.","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2016-06-22 00:00:00 +0900">June 22, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Ubuntu 에서 MySQL-python 설치시 오류 해결</h1>
+  <div class="post-line"></div>
+
+  <p>Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">MySQLdb</span></code></pre></figure>
+
+<p>MySQL-python 을 pip 로 설치 시도.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">sudo </span>pip <span class="nb">install </span>MySQL-python
+Downloading/unpacking MySQL-python
+  Downloading MySQL-python-1.2.5.zip <span class="o">(</span>108kB<span class="o">)</span>: 108kB downloaded
+  Running setup.py <span class="o">(</span>path:/tmp/pip_build_root/MySQL-python/setup.py<span class="o">)</span> egg_info <span class="k">for </span>package MySQL-python
+    sh: 1: mysql_config: not found
+    Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+      File <span class="s2">"&lt;string&gt;"</span>, line 17, <span class="k">in</span> &lt;module&gt;
+      File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup.py"</span>, line 17, <span class="k">in</span> &lt;module&gt;
+        metadata, options <span class="o">=</span> get_config<span class="o">()</span>
+      File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup_posix.py"</span>, line 43, <span class="k">in </span>get_config
+        libs <span class="o">=</span> mysql_config<span class="o">(</span><span class="s2">"libs_r"</span><span class="o">)</span>
+      File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup_posix.py"</span>, line 25, <span class="k">in </span>mysql_config
+        raise EnvironmentError<span class="o">(</span><span class="s2">"%s not found"</span> % <span class="o">(</span>mysql_config.path,<span class="o">))</span>
+    EnvironmentError: mysql_config not found
+    Complete output from <span class="nb">command </span>python setup.py egg_info:
+    sh: 1: mysql_config: not found
+
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"&lt;string&gt;"</span>, line 17, <span class="k">in</span> &lt;module&gt;
+  File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup.py"</span>, line 17, <span class="k">in</span> &lt;module&gt;
+    metadata, options <span class="o">=</span> get_config<span class="o">()</span>
+  File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup_posix.py"</span>, line 43, <span class="k">in </span>get_config
+    libs <span class="o">=</span> mysql_config<span class="o">(</span><span class="s2">"libs_r"</span><span class="o">)</span>
+  File <span class="s2">"/tmp/pip_build_root/MySQL-python/setup_posix.py"</span>, line 25, <span class="k">in </span>mysql_config
+    raise EnvironmentError<span class="o">(</span><span class="s2">"%s not found"</span> % <span class="o">(</span>mysql_config.path,<span class="o">))</span>
+
+EnvironmentError: mysql_config not found
+
+<span class="nt">----------------------------------------</span>
+Cleaning up...
+Command python setup.py egg_info failed with error code 1 <span class="k">in</span> /tmp/pip_build_root/MySQL-python</code></pre></figure>
+
+<p>python-dev 와 libmysqlclient-dev 를 설치하라고 하는데 libmysqlclient-dev 설치시 아래와 같은 에러가 발생한다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>libmysqlclient-dev
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or <span class="k">if </span>you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may <span class="nb">help </span>to resolve the situation:
+
+The following packages have unmet dependencies:
+ libmysqlclient-dev : Depends: libmysqlclient18 <span class="o">(=</span> 5.5.49-0ubuntu0.14.04.1<span class="o">)</span> but 10.0.25+maria-1~trusty is to be installed
+E: Unable to correct problems, you have held broken packages.</code></pre></figure>
+
+<p>돌아가서 MySQL-python 을 apt-get 으로 설치해서 문제를 해결한다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>python-MySQLdb
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libntdb1 python-ntdb
+Use <span class="s1">'apt-get autoremove'</span> to remove them.
+Suggested packages:
+  python-egenix-mxdatetime python-mysqldb-dbg
+The following NEW packages will be installed:
+  python-mysqldb
+0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
+Need to get 55.4 kB of archives.
+After this operation, 196 kB of additional disk space will be used.
+Get:1 http://ftp.daumkakao.com/ubuntu/ trusty/main python-mysqldb amd64 1.2.3-2ubuntu1 <span class="o">[</span>55.4 kB]
+Fetched 55.4 kB <span class="k">in </span>0s <span class="o">(</span>120 kB/s<span class="o">)</span>
+Selecting previously unselected package python-mysqldb.
+<span class="o">(</span>Reading database ... 206384 files and directories currently installed.<span class="o">)</span>
+Preparing to unpack .../python-mysqldb_1.2.3-2ubuntu1_amd64.deb ...
+Unpacking python-mysqldb <span class="o">(</span>1.2.3-2ubuntu1<span class="o">)</span> ...
+Setting up python-mysqldb <span class="o">(</span>1.2.3-2ubuntu1<span class="o">)</span> ...</code></pre></figure>
+
+
+
+</div>
+
+<div class="pagination">
+  
+  
+    <a href="/2016-04-17/okcupid" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

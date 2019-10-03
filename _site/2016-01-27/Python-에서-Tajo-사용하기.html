@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Python 에서 Tajo 사용하기 | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Python 에서 Tajo 사용하기" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="라인웍스에서는 정적인 데이터를 분석하는 경우 데이터레이크(Data Lake) 로 TAJO 를 사용하고 있다. 회사 내에서 분석하고 서비스로 만들어내는 모든 데이터는 여기에서 시작된다. 우선 TAJO 에 Query 를 이용하여 데이터를 쪼개보고, 붙여보고, 나열해본 후에는 이를 csv 파일로 만든 후 에 Python 으로 load 하여 그래프를 그리거나 머신러닝 알고리즘을 수행하는 형식이다. (Python 의 경우 직접 실행하는 방법도 있고 IPython Notebook 을 사용하기도 한다.)" />
+<meta property="og:description" content="라인웍스에서는 정적인 데이터를 분석하는 경우 데이터레이크(Data Lake) 로 TAJO 를 사용하고 있다. 회사 내에서 분석하고 서비스로 만들어내는 모든 데이터는 여기에서 시작된다. 우선 TAJO 에 Query 를 이용하여 데이터를 쪼개보고, 붙여보고, 나열해본 후에는 이를 csv 파일로 만든 후 에 Python 으로 load 하여 그래프를 그리거나 머신러닝 알고리즘을 수행하는 형식이다. (Python 의 경우 직접 실행하는 방법도 있고 IPython Notebook 을 사용하기도 한다.)" />
+<link rel="canonical" href="http://localhost:4000/2016-01-27/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" />
+<meta property="og:url" content="http://localhost:4000/2016-01-27/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-01-27T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2016-01-27/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0","headline":"Python 에서 Tajo 사용하기","dateModified":"2016-01-27T00:00:00+09:00","datePublished":"2016-01-27T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016-01-27/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"라인웍스에서는 정적인 데이터를 분석하는 경우 데이터레이크(Data Lake) 로 TAJO 를 사용하고 있다. 회사 내에서 분석하고 서비스로 만들어내는 모든 데이터는 여기에서 시작된다. 우선 TAJO 에 Query 를 이용하여 데이터를 쪼개보고, 붙여보고, 나열해본 후에는 이를 csv 파일로 만든 후 에 Python 으로 load 하여 그래프를 그리거나 머신러닝 알고리즘을 수행하는 형식이다. (Python 의 경우 직접 실행하는 방법도 있고 IPython Notebook 을 사용하기도 한다.)","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2016-01-27 00:00:00 +0900">January 27, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Python 에서 Tajo 사용하기</h1>
+  <div class="post-line"></div>
+
+  <p>라인웍스에서는 정적인 데이터를 분석하는 경우 데이터레이크(Data Lake) 로 <a href="http://tajo.apache.org/">TAJO</a> 를 사용하고 있다. 회사 내에서 분석하고 서비스로 만들어내는 모든 데이터는 여기에서 시작된다. 우선 TAJO 에 Query 를 이용하여 데이터를 쪼개보고, 붙여보고, 나열해본 후에는 이를 csv 파일로 만든 후 에 <a href="https://www.python.org/">Python</a> 으로 load 하여 그래프를 그리거나 머신러닝 알고리즘을 수행하는 형식이다.<br />
+<em>(Python 의 경우 직접 실행하는 방법도 있고 <a href="http://ipython.org/notebook.html">IPython Notebook</a> 을 사용하기도 한다.)</em></p>
+
+<p>결국 Data - TAJO - CSV - Python - RESULTS 와 같은 단계를 거치게 되는데 이 단계를 단축시켜보자는게 이 포스팅의 목적이다.</p>
+
+<h2 id="tajo-에-대해서-간단히-알아보자">TAJO 에 대해서 간단히 알아보자.</h2>
+
+<hr />
+
+<blockquote>
+  <p>Apache Tajo is a robust big data relational and distributed data warehouse system for Apache Hadoop. Tajo is designed for low-latency and scalable ad-hoc queries, online aggregation, and ETL (extract-transform-load process) on large-data sets stored on HDFS (Hadoop Distributed File System) and other data sources. By supporting SQL standards and leveraging advanced database techniques, Tajo allows direct control of distributed execution and data flow across a variety of query evaluation strategies and optimization opportunities. (<a href="http://tajo.apache.org/">TAJO 공식 홈페이지</a>)</p>
+</blockquote>
+
+<p>TAJO 공식 홈페이지에서 가져온 소개글인데, 간단히 정리하면 Hadoop 기반의 Data warehouse 로 SQL 질의(query) 를 통하여 데이터를 다룰 수 있는 시스템이다.</p>
+
+<h2 id="python-에서-tajo-를-사용해보자">Python 에서 TAJO 를 사용해보자</h2>
+
+<hr />
+
+<p>간단하게 이야기해서 Python 에서 TAJO 를 호출하여 사용할 수 있도록 하면된다.</p>
+
+<p>우선 TAJO 가 JDBC 를 지원하기 때문에 <a href="http://tajo.apache.org/docs/current/jdbc_driver.html">Tajo JDBC Driver</a> 를 이용하도록 한다.</p>
+
+<p>Python 에서 JDBC 를 사용하기 위해서 <a href="https://pypi.python.org/pypi/JayDeBeApi/">JayDeBeApi</a> 을 설치한다.</p>
+
+<p>설치는 pip 를 이용해서 할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>JayDeBeApi</code></pre></figure>
+
+<p>JayDeBeApi 기본 Tutorial 과 다른 부분이 있는데 JPype 를 이용해서 JVM 을 올려줘야 한다. (jar 파일의 위치는 tajo 가 설치된 위치를 이용하여 바꿔주자.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">jaydebeapi</span><span class="p">,</span> <span class="n">jpype</span>
+<span class="n">jar</span> <span class="o">=</span> <span class="s">'${TAJO_HOME}/share/jdbc-dist/tajo-jdbc-x.y.z.jar'</span>
+<span class="n">args</span> <span class="o">=</span> <span class="s">'-Djava.class.path=</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">jar</span>
+<span class="n">jvm_path</span> <span class="o">=</span> <span class="n">jpype</span><span class="o">.</span><span class="n">getDefaultJVMPath</span><span class="p">()</span>
+<span class="n">jpype</span><span class="o">.</span><span class="n">startJVM</span><span class="p">(</span><span class="n">jvm_path</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></code></pre></figure>
+
+<p>이제 tajo 에 connect 요청을 할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">conn</span> <span class="o">=</span> <span class="n">jaydebeapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"org.apache.tajo.jdbc.TajoDriver"</span><span class="p">,</span><span class="s">"jdbc:tajo://host:port/database"</span><span class="p">)</span>
+<span class="n">curs</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span></code></pre></figure>
+
+<p>아래와 같이 query 를 실행할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">query</span> <span class="o">=</span> <span class="s">"select * from table1"</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></code></pre></figure>
+
+<hr />
+
+<ul>
+  <li>이 글은 현재 일하고 있는 <a href="http://linewalks.com/blog">라인웍스의  블로그</a> 에 기고한 글로 원문의 주소는 아래와 같다.</li>
+  <li>http://linewalks.com/archives/1085</li>
+</ul>
+
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016-01-30/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EA%B4%80%EB%A0%A8%ED%95%98%EC%97%AC-%EA%B8%B0%EC%97%85%EB%93%A4%EC%9D%B4-%EA%B3%B5%EA%B0%9C%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%9D%80-%EC%96%B4%EB%96%A4%EA%B2%8C-%EC%9E%88%EC%9D%84%EA%B9%8C" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016-01-15/%EC%95%BC%ED%9B%84-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B3%B5%EA%B0%9C" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

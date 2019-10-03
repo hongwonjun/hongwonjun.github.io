@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Ruby - migrate_from_mantis 실행시 undefined method `set_inheritance_column’ for MantisMigrate::MantisCustomField(Table doesn’t exist):Class 에러 | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Ruby - migrate_from_mantis 실행시 undefined method `set_inheritance_column’ for MantisMigrate::MantisCustomField(Table doesn’t exist):Class 에러" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mantis 에서 Redmine 으로 Migration 을 진행할 때 아래와 같은 에러가 발행하였다." />
+<meta property="og:description" content="Mantis 에서 Redmine 으로 Migration 을 진행할 때 아래와 같은 에러가 발행하였다." />
+<link rel="canonical" href="http://localhost:4000/2015-09-05/ruby-redmine-mantis-migrate-error" />
+<meta property="og:url" content="http://localhost:4000/2015-09-05/ruby-redmine-mantis-migrate-error" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-09-05T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2015-09-05/ruby-redmine-mantis-migrate-error","headline":"Ruby - migrate_from_mantis 실행시 undefined method `set_inheritance_column’ for MantisMigrate::MantisCustomField(Table doesn’t exist):Class 에러","dateModified":"2015-09-05T00:00:00+09:00","datePublished":"2015-09-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2015-09-05/ruby-redmine-mantis-migrate-error"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"Mantis 에서 Redmine 으로 Migration 을 진행할 때 아래와 같은 에러가 발행하였다.","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2015-09-05 00:00:00 +0900">September 05, 2015</time>
+    
+  </div>
+
+  <h1 class="post-title">Ruby - migrate_from_mantis 실행시 undefined method `set_inheritance_column' for MantisMigrate&#58;&#58;MantisCustomField(Table doesn't exist)&#58;Class 에러</h1>
+  <div class="post-line"></div>
+
+  <p>Mantis 에서 Redmine 으로 Migration 을 진행할 때 아래와 같은 에러가 발행하였다.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">(</span><span class="k">in</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="o">/</span><span class="n">redmine</span><span class="p">)</span>
+<span class="n">rake</span> <span class="n">aborted!</span>
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`set_inheritance_column' for MantisMigrate::MantisCustomField(Table doesn't exist):Class</span></code></pre></figure>
+
+<p>코드를 아래와 같이 수정</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="p">.</span><span class="nf">inheritance_column</span> <span class="o">=</span> <span class="ss">:none</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">set_inheritance_column</span> <span class="ss">:none</span></code></pre></figure>
+
+<p>Reference</p>
+<ul>
+  <li><a href="https://www.redmine.org/issues/19173">Trac Migrate Script with Redmine 3.0</a></li>
+</ul>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016-01-15/%EC%95%BC%ED%9B%84-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B3%B5%EA%B0%9C" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2015-09-04/redmine-bitbucket" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

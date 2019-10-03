@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Redmine - Bitbucket 에 Git hook 설정 | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Redmine - Bitbucket 에 Git hook 설정" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="기본적 아래의 Plugin 을 사용" />
+<meta property="og:description" content="기본적 아래의 Plugin 을 사용" />
+<link rel="canonical" href="http://localhost:4000/2015-09-04/redmine-bitbucket" />
+<meta property="og:url" content="http://localhost:4000/2015-09-04/redmine-bitbucket" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-09-04T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2015-09-04/redmine-bitbucket","headline":"Redmine - Bitbucket 에 Git hook 설정","dateModified":"2015-09-04T00:00:00+09:00","datePublished":"2015-09-04T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2015-09-04/redmine-bitbucket"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"기본적 아래의 Plugin 을 사용","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2015-09-04 00:00:00 +0900">September 04, 2015</time>
+    
+  </div>
+
+  <h1 class="post-title">Redmine - Bitbucket 에 Git hook 설정</h1>
+  <div class="post-line"></div>
+
+  <p>기본적 아래의 Plugin 을 사용</p>
+
+<ul>
+  <li><a href="http://www.redmine.org/plugins/redmine_bitbucket">Plugins Directory » Redmine Bitbucket</a></li>
+  <li><a href="https://bitbucket.org/steveqx/redmine_bitbucket/overview">steveqx / redmine_bitbucket</a></li>
+</ul>
+
+<p>설치와 설정 자체는 어렵지 않은데 중간에 아래와 같은 문구가 있다.</p>
+
+<blockquote>
+  <p>Configure SSH key for the web server user if need to pull from private repositories.
+  (https://confluence.atlassian.com/display/BITBUCKET/Using+the+SSH+protocol+with+bitbucket)</p>
+</blockquote>
+
+<p>이 부분 (private repositories) 에서 좀 삽질을 했는데,</p>
+
+<figure class="highlight"><pre><code class="language-clike" data-lang="clike">$ sudo -u www-data ssh-keygen -t rsa</code></pre></figure>
+
+<p>위와 같은 명령어로 www-data 에 공개키를 생성해서 bitbucket 에 등록해주면 된다.</p>
+
+<p>키의 위치는 아래와 같다.</p>
+
+<figure class="highlight"><pre><code class="language-clike" data-lang="clike">/var/www/.ssh</code></pre></figure>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2015-09-05/ruby-redmine-mantis-migrate-error" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2015-09-03/redmine-file-attachment-error" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

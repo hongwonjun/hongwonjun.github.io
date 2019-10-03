@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>m-fold Cross-validation | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="m-fold Cross-validation" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="통계를 낼 때 데이터를 m 개의 set 으로 나눈 후에 m-1 개의 set 을 training data 로 사용, 나머지 1개의 set 을 testing data 로 사용하여 error rate 를 계산한다." />
+<meta property="og:description" content="통계를 낼 때 데이터를 m 개의 set 으로 나눈 후에 m-1 개의 set 을 training data 로 사용, 나머지 1개의 set 을 testing data 로 사용하여 error rate 를 계산한다." />
+<link rel="canonical" href="http://localhost:4000/2014-03-11/m-fold-Cross-validation" />
+<meta property="og:url" content="http://localhost:4000/2014-03-11/m-fold-Cross-validation" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-03-11T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2014-03-11/m-fold-Cross-validation","headline":"m-fold Cross-validation","dateModified":"2014-03-11T00:00:00+09:00","datePublished":"2014-03-11T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2014-03-11/m-fold-Cross-validation"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"통계를 낼 때 데이터를 m 개의 set 으로 나눈 후에 m-1 개의 set 을 training data 로 사용, 나머지 1개의 set 을 testing data 로 사용하여 error rate 를 계산한다.","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2014-03-11 00:00:00 +0900">March 11, 2014</time>
+    
+  </div>
+
+  <h1 class="post-title">m-fold Cross-validation</h1>
+  <div class="post-line"></div>
+
+  <p>통계를 낼 때 데이터를 m 개의 set 으로 나눈 후에 m-1 개의 set 을 training data 로 사용, 나머지 1개의 set 을 testing data 로 사용하여 error rate 를 계산한다.</p>
+
+<p>testing data 를 1번째부터 m 번째의 set 으로 선택하여 m 번의 testing 을 하고 각 testing 에서의 error rate 의 평균값을 구하여 전체의 error rate 를 계산하는 방법.</p>
+
+<p>이를 이용하는 이유는 overfitting 을 피하기 위해서로 볼 수 있다.</p>
+
+<p>참고 사이트</p>
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Cross-validation_(statistics)">Cross-validation (statistics) – WIKIPEDIA</a></li>
+</ul>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2015-05-07/osx-python-ldap" class="left arrow">&#8592;</a>
+  
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>

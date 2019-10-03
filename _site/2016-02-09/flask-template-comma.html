@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기 | Hong Wonjun Blog</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다." />
+<meta property="og:description" content="Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다." />
+<link rel="canonical" href="http://localhost:4000/2016-02-09/flask-template-comma" />
+<meta property="og:url" content="http://localhost:4000/2016-02-09/flask-template-comma" />
+<meta property="og:site_name" content="Hong Wonjun Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-02-09T00:00:00+09:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2016-02-09/flask-template-comma","headline":"Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기","dateModified":"2016-02-09T00:00:00+09:00","datePublished":"2016-02-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2016-02-09/flask-template-comma"},"author":{"@type":"Person","name":"Hong Wonjun"},"description":"Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다.","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- RSS -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hong Wonjun Blog" />
+
+  <!-- Google Analytics-->
+  
+</head>
+
+
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Hong Wonjun Blog</h2>
+    </a>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/">Posts</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Hong Wonjun
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2016-02-09 00:00:00 +0900">February 09, 2016</time>
+    
+  </div>
+
+  <h1 class="post-title">Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기</h1>
+  <div class="post-line"></div>
+
+  <p>Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다.</p>
+
+<p>미리 서버쪽에서 string 으로 변환하는 경우도 있으나 template page 에서도 format function 을 사용하여 변환할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&amp;</span><span class="c1">#123;&amp;#123;'{0:,.1f}'.format(value)&amp;#125;&amp;#125;</span></code></pre></figure>
+
+<p>위와 같이 사용하는 경우 3자리마다 comma(,) 를 출력하고 소수점 1자리까지 출력한다.</p>
+
+
+</div>
+
+<div class="pagination">
+  
+    <a href="/2016-02-23/%EB%A7%A5%EC%A3%BC%EC%99%80-%EA%B8%B0%EC%A0%80%EA%B7%80" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2016-02-09/flask-chartjs-legend" class="right arrow">&#8594;</a>
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+  <span>
+    &copy; <time datetime="2019-10-03 23:41:45 +0900">2019</time> Hong Wonjun. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+  </span>
+</footer>
+
+  </body>
+</html>
