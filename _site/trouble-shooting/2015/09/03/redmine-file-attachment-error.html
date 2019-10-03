@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Redmine - file attachment Error | Healthcare data note by wonjun</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Redmine - file attachment Error" />
+<meta name="author" content="Hong Wonjun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Error Log." />
+<meta property="og:description" content="Error Log." />
+<link rel="canonical" href="https//hongwonjun.github.io/trouble-shooting/2015/09/03/redmine-file-attachment-error.html" />
+<meta property="og:url" content="https//hongwonjun.github.io/trouble-shooting/2015/09/03/redmine-file-attachment-error.html" />
+<meta property="og:site_name" content="Healthcare data note by wonjun" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-09-03T00:00:00+09:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https//hongwonjun.github.io/trouble-shooting/2015/09/03/redmine-file-attachment-error.html"},"url":"https//hongwonjun.github.io/trouble-shooting/2015/09/03/redmine-file-attachment-error.html","author":{"@type":"Person","name":"Hong Wonjun"},"headline":"Redmine - file attachment Error","dateModified":"2015-09-03T00:00:00+09:00","datePublished":"2015-09-03T00:00:00+09:00","description":"Error Log.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https//hongwonjun.github.io/feed.xml" title="Healthcare data note by wonjun" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Healthcare data note by wonjun</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Redmine - file attachment Error</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-09-03T00:00:00+09:00" itemprop="datePublished">Sep 3, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Hong Wonjun</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Error Log.</p>
+
+<figure class="highlight"><pre><code class="language-clike" data-lang="clike">Started POST "/uploads.js?attachment_id=******.docx&amp;amp;content_type=application%2Fvnd.openxmlformats-officedocument.wordprocessingml.document" for ***.***.***.*** at ****-**-** **:**:** +****
+Processing by AttachmentsController#upload as JS
+  Parameters: {"attachment_id"=&amp;gt;"******.", "filename"=&amp;gt;"******.docx", "content_type"=&amp;gt;"application/vnd.openxmlformats-officedocument.wordprocessingml.document"}
+  Current user: ****** (id=*)
+Saving attachment '******/redmine/files/****/**/*************_****************.docx' (******* bytes)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms)
+
+Errno::EACCES (Permission denied - ********/redmine/files/****/**/*************_****************.docx):
+  app/models/attachment.rb:109:in `initialize'
+  app/models/attachment.rb:109:in `open'
+  app/models/attachment.rb:109:in `files_to_final_location'
+  app/controllers/attachments_controller.rb:90:in `upload'
+  lib/redmine/sudo_mode.rb:63:in `sudo_mode'</code></pre></figure>
+
+<p>이런 경우 보통 permission 값 때문인데, files 는 이미 웹서버 권한으로 설정이 되어 있는 상태이다.</p>
+
+<p>확인결과,<br />
+기존에 migration 을 시행할 때 첨부파일 때문에 files 하위에 root 권한으로 폴더가 생성되어 있었다.</p>
+
+<figure class="highlight"><pre><code class="language-clike" data-lang="clike">$ sudo chown -R www-data:www-data files/</code></pre></figure>
+
+<p>redmine 설치 위치에서 위의 명령어를 실행하면 된다.</p>
+
+  </div><a class="u-url" href="/trouble-shooting/2015/09/03/redmine-file-attachment-error.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Healthcare data note by wonjun</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Healthcare data note by wonjun</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hongwonjun"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hongwonjun</span></a></li><li><a href="https://www.twitter.com/hongwonjun"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">hongwonjun</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>스타트업에서 헬스케어 데이터를 다루는 데이터쟁이의 노트.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

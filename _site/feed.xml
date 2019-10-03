@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https//hongwonjun.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https//hongwonjun.github.io/" rel="alternate" type="text/html" /><updated>2019-10-03T14:28:14+09:00</updated><id>https//hongwonjun.github.io/feed.xml</id><title type="html">Healthcare data note by wonjun</title><subtitle>스타트업에서 헬스케어 데이터를 다루는 데이터쟁이의 노트.</subtitle><entry><title type="html">Ubuntu 에서 MySQL-python 설치시 오류 해결</title><link href="https//hongwonjun.github.io/trouble-shooting/2016/06/22/ubuntu-mysql-python.html" rel="alternate" type="text/html" title="Ubuntu 에서 MySQL-python 설치시 오류 해결" /><published>2016-06-22T00:00:00+09:00</published><updated>2016-06-22T00:00:00+09:00</updated><id>https//hongwonjun.github.io/trouble-shooting/2016/06/22/ubuntu-mysql-python</id><content type="html" xml:base="https//hongwonjun.github.io/trouble-shooting/2016/06/22/ubuntu-mysql-python.html">&lt;p&gt;Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;nb&quot;&gt;ImportError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;No&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MySQLdb&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;MySQL-python 을 pip 로 설치 시도.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;MySQL-python
+Downloading/unpacking MySQL-python
+  Downloading MySQL-python-1.2.5.zip &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;108kB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 108kB downloaded
+  Running setup.py &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;path:/tmp/pip_build_root/MySQL-python/setup.py&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; egg_info &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;package MySQL-python
+    sh: 1: mysql_config: not found
+    Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+      File &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;string&amp;gt;&quot;&lt;/span&gt;, line 17, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+      File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup.py&quot;&lt;/span&gt;, line 17, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+        metadata, options &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get_config&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+      File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup_posix.py&quot;&lt;/span&gt;, line 43, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;get_config
+        libs &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mysql_config&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;libs_r&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+      File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup_posix.py&quot;&lt;/span&gt;, line 25, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;mysql_config
+        raise EnvironmentError&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%s not found&quot;&lt;/span&gt; % &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mysql_config.path,&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    EnvironmentError: mysql_config not found
+    Complete output from &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;python setup.py egg_info:
+    sh: 1: mysql_config: not found
+
+Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+  File &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;string&amp;gt;&quot;&lt;/span&gt;, line 17, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup.py&quot;&lt;/span&gt;, line 17, &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &amp;lt;module&amp;gt;
+    metadata, options &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get_config&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup_posix.py&quot;&lt;/span&gt;, line 43, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;get_config
+    libs &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mysql_config&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;libs_r&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&quot;/tmp/pip_build_root/MySQL-python/setup_posix.py&quot;&lt;/span&gt;, line 25, &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;mysql_config
+    raise EnvironmentError&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%s not found&quot;&lt;/span&gt; % &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mysql_config.path,&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+
+EnvironmentError: mysql_config not found
+
+&lt;span class=&quot;nt&quot;&gt;----------------------------------------&lt;/span&gt;
+Cleaning up...
+Command python setup.py egg_info failed with error code 1 &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; /tmp/pip_build_root/MySQL-python&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;python-dev 와 libmysqlclient-dev 를 설치하라고 하는데 libmysqlclient-dev 설치시 아래와 같은 에러가 발생한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libmysqlclient-dev
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;to resolve the situation:
+
+The following packages have unmet dependencies:
+ libmysqlclient-dev : Depends: libmysqlclient18 &lt;span class=&quot;o&quot;&gt;(=&lt;/span&gt; 5.5.49-0ubuntu0.14.04.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; but 10.0.25+maria-1~trusty is to be installed
+E: Unable to correct problems, you have held broken packages.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;돌아가서 MySQL-python 을 apt-get 으로 설치해서 문제를 해결한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-MySQLdb
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libntdb1 python-ntdb
+Use &lt;span class=&quot;s1&quot;&gt;'apt-get autoremove'&lt;/span&gt; to remove them.
+Suggested packages:
+  python-egenix-mxdatetime python-mysqldb-dbg
+The following NEW packages will be installed:
+  python-mysqldb
+0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
+Need to get 55.4 kB of archives.
+After this operation, 196 kB of additional disk space will be used.
+Get:1 http://ftp.daumkakao.com/ubuntu/ trusty/main python-mysqldb amd64 1.2.3-2ubuntu1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;55.4 kB]
+Fetched 55.4 kB &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;0s &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;120 kB/s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Selecting previously unselected package python-mysqldb.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ... 206384 files and directories currently installed.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Preparing to unpack .../python-mysqldb_1.2.3-2ubuntu1_amd64.deb ...
+Unpacking python-mysqldb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.2.3-2ubuntu1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
+Setting up python-mysqldb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.2.3-2ubuntu1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Hong Wonjun</name></author><category term="python," /><category term="ubuntu," /><category term="mysql" /><summary type="html">Python 에서 SQLAlchemy 를 사용하여 MariaDB (혹은 MySQL) 을 사용할 때 아래와 같은 메세지가 발생했다.</summary></entry><entry><title type="html">(BOOK) 빅데이터를 말하다.</title><link href="https//hongwonjun.github.io/data/2016/04/17/book-bigdata.html" rel="alternate" type="text/html" title="(BOOK) 빅데이터를 말하다." /><published>2016-04-17T00:00:00+09:00</published><updated>2016-04-17T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/04/17/book-bigdata</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/04/17/book-bigdata.html">&lt;div class=&quot;ttbReview&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=25968029&amp;amp;ttbkey=ttbsakuwolf1642007&amp;amp;COPYPaper=1&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://image.aladin.co.kr/product/2596/80/coversum/8997793071_1.jpg&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/td&gt;&lt;td align=&quot;left&quot; style=&quot;vertical-align:top;&quot;&gt;&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=25968029&amp;amp;ttbkey=ttbsakuwolf1642007&amp;amp;COPYPaper=1&quot; target=&quot;_blank&quot; class=&quot;aladdin_title&quot;&gt;빅데이터를 말하다&lt;/a&gt; - &lt;img src=&quot;http://image.aladin.co.kr/img/common/star_s2.gif&quot; border=&quot;0&quot; alt=&quot;2점&quot; /&gt;&lt;br /&gt;정우진 지음/클라우드북스&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;2016.01.17 ~ 2016.02.02&lt;/p&gt;
+
+&lt;p&gt;2013년에 읽었어야 했던 책.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;맥킨지의 분석에 따르면 빅데이터 분석을 통해 상품 개발과 생산 비용을 50%까지 줄일 수 있고 재고 자산 등의 효율화를 통해 운전 비용도 7% 이상 절감 가능하다고 한다. 순간순간 긴박한 의사결정이 필요한 의료 현장에 빅데이터가 적용되면 의사는 이를 바탕으로 즉시 의사결정을 내릴 수 있다. 실제로 온타리오 대학 병원은 IBM의 빅데이터 솔루션을 활용하여 미숙아 사망률을 혁신적으로 줄이는 데에 성공하기도 했다. - p.21&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;마지막으로, 지능형 서비스에 거는 가장 큰 기대 요소는 개별 분야의 오래된 난제를 해결할 실마리를 제시할 수 있다는 점이다. 환자의 신체 특성과 가족력, 생활 습관, 업무 환경 등의 데이터를 빠짐없이 수집하여 치료에 사용하는 지능형 의료에서는 방대한 임상 데이터를 기반으로 난치병 연구가 혁신적으로 진전될 수 있다. - p.22&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;책에서 소개하는 서비스들&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/bigquery/?hl=ko&quot;&gt;Google BigQuery&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;데이터 마켓플레이스&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://factual.com&quot;&gt;factual&lt;/a&gt; - 장소 데이터&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://datasift.com&quot;&gt;DATASIFT&lt;/a&gt; - 소셜 미디어 분석&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://infochimps.com&quot;&gt;infochimps&lt;/a&gt; - 업종별 다양한 빅데이터 분석과 시나리오를 제공&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://azure.microsoft.com/en-us/marketplace/&quot;&gt;Microsoft Azure&lt;/a&gt; - 마이크로소프트는 서비스형 플랫폼 기반의 클라우드 서비스인 애저에 데이터 마켓플레이스인 데이터 마켓 플레이스를 런칭하였다. 애저 마켓 플레이스는 단순히 데이터만 개방하고 공유하는 것이 아니라, 공공 기관의 무료 오픈 데이터와 기업의 유료 공유 데이터를 사고 팔 수 있을 뿐만 아니라, 데이터 분석 업체와 다양한 개발 업체와 서비스 업체가 참여하여 서비스도 앱이나 웹서비스 형태로 다양하게 사고 팔 수 있는 데이터 시장과 같은 생태계를 구축하였다.&lt;/li&gt;
+  &lt;li&gt;소셜 큐레이션&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://visual.ly&quot;&gt;visually&lt;/a&gt; - 데이터 가시화 서비스를 하는 인포스래픽형 소셜 큐레이션&lt;/li&gt;
+  &lt;li&gt;위치기반 데이터 분석&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://esri.com&quot;&gt;esri&lt;/a&gt; - 세계적인 공간 정보분야 솔루션 기업, 1969년 창업, 공간정보 솔루션분야 세계시장 점유율 1위 (2012기준, 27.8%)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Hong Wonjun</name></author><category term="Book," /><category term="data" /><summary type="html">빅데이터를 말하다 - 정우진 지음/클라우드북스</summary></entry><entry><title type="html">(BOOK) 빅데이터 인간을 해석하다</title><link href="https//hongwonjun.github.io/data/2016/04/17/okcupid.html" rel="alternate" type="text/html" title="(BOOK) 빅데이터 인간을 해석하다" /><published>2016-04-17T00:00:00+09:00</published><updated>2016-04-17T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/04/17/okcupid</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/04/17/okcupid.html">&lt;div class=&quot;ttbReview&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=63403511&amp;amp;ttbkey=ttbsakuwolf1642007&amp;amp;COPYPaper=1&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://image.aladin.co.kr/product/6340/35/coversum/k522433339_1.jpg&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/td&gt;&lt;td align=&quot;left&quot; style=&quot;vertical-align:top;&quot;&gt;&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=63403511&amp;amp;ttbkey=ttbsakuwolf1642007&amp;amp;COPYPaper=1&quot; target=&quot;_blank&quot; class=&quot;aladdin_title&quot;&gt;빅데이터 인간을 해석하다&lt;/a&gt; - &lt;img src=&quot;http://image.aladin.co.kr/img/common/star_s8.gif&quot; border=&quot;0&quot; alt=&quot;8점&quot; /&gt;&lt;br /&gt;크리스천 러더 지음, 이가영 옮김/다른&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;~2016.01.15&lt;/p&gt;
+
+&lt;p&gt;저자인 &lt;a href=&quot;https://twitter.com/christianrudder&quot;&gt;크리스천 러더&lt;/a&gt;는 2004년 부터 서비스를 시작한 &lt;a href=&quot;https://www.okcupid.com&quot;&gt;okcupid&lt;/a&gt; 의 공동 창립자이며 데이터 과학자이다.&lt;/p&gt;
+
+&lt;p&gt;책에 의하면 okcupid 에서는 매일 밤 약 3만 쌍의 커플이 서비스를 통해 첫 데이트를 즐길 것이고, 이 가운데 3,000쌍은 장기적인 관계로 발전, 그 중 200쌍은 결혼에 이르는 정도라고 한다.&lt;/p&gt;
+
+&lt;p&gt;저자는 서비스를 운영하며 발견한 사항을 블로그로 발행하고 있으며 (마지막 글은 2014년 9월 10일에 등록되었다.) 실제로 이 책 또한 그가 운영하는 &lt;a href=&quot;http://oktrends.okcupid.com/&quot;&gt;OkTrends&lt;/a&gt; 를 기반으로 쓰여진 책이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://blog.okcupid.com/wp-content/uploads/2014/09/dataclysm-promo-image-495.png&quot; alt=&quot;Dataclysm&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;개인적으로는 책에서 데이터를 표현하기 위해서 사용한 그래프들에 관심이 많이 생겼는데 이는 &lt;a href=&quot;http://www.edwardtufte.com/tufte/&quot;&gt;Edward R. Tufte&lt;/a&gt; 의 작품을 참고했다고 한다. 이 중에서도 &lt;em&gt;1부: 무엇이 우리를 연결하는가-3.SNS가 글쓰기를 망친다?&lt;/em&gt; 에서 분산차트를 소개하는데 여기서 각 점에 투명도를 입혀서 밀도를 보여주는 방법은 (사실 큰 일은 아니지만) 책을 읽고 있을 때 고민하던터라 많은 도움이 되었다.&lt;/p&gt;
+
+&lt;p&gt;굉장히 재미있는 분석들이 있으며 데이터를 분석하는 일을 하는 사람 (혹은 데이터를 분석하는데 관심이 있는 사람) 이라면 한번쯤 읽어볼만한 책이다. 다만 단점이라면 재미있는 사실을 찾기는 하지만 이를 통하여 수익을 얻는 이야기는 아니라는 것. (하지만 많은 부분에서 서비스에 녹아들어가 있을 것이라는 점을 느낄 수 있다.)&lt;/p&gt;</content><author><name>Hong Wonjun</name></author><category term="Book," /><category term="data" /><summary type="html">빅데이터 인간을 해석하다 - 크리스천 러더 지음, 이가영 옮김/다른</summary></entry><entry><title type="html">구글의 자율주행차. 첫 사고를 내다.</title><link href="https//hongwonjun.github.io/data/2016/03/10/google-self-driving-car-accident.html" rel="alternate" type="text/html" title="구글의 자율주행차. 첫 사고를 내다." /><published>2016-03-10T00:00:00+09:00</published><updated>2016-03-10T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/03/10/google-self-driving-car-accident</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/03/10/google-self-driving-car-accident.html">&lt;p&gt;&lt;img src=&quot;https://www.google.com/selfdrivingcar/images/gallery/city.jpg&quot; alt=&quot;Google Self-Driving Car&quot; title=&quot;Google Self-Driving Car&quot; /&gt;&lt;br /&gt;
+출처: &lt;a href=&quot;https://www.google.com/selfdrivingcar/where/&quot;&gt;On the road - Google Self-Driving Car Project&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://googleasiapacific.blogspot.kr/2016/03/alphagos-ultimate-challenge.html&quot;&gt;오늘 (2016년 3월 9일) 알파고가 이세돌 9단에게 승리를 거두어&lt;/a&gt; 인공지능과 관련된 이야기가 끊임없이 들리고 있다.&lt;/p&gt;
+
+&lt;p&gt;관련하여(사실 별 상관은 없지만) 지난 달(2016년 2월 14일)에 &lt;a href=&quot;https://www.google.com/selfdrivingcar/&quot;&gt;구글의 자율주행차&lt;/a&gt;가 첫 사고를 냈었다는 뉴스가 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://recode.net/2016/02/29/googles-self-driving-car-hit-another-vehicle-for-the-first-time/&quot;&gt;2016년 2월 29일 re/code에 올라온 기사&lt;/a&gt; 다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;구글의 자율 주행차가 도로로 나온 이후 17건의 사고가 있었으나 이는 자율주행차의 잘못이 아니였다. (다른 차의 잘못이었거나 테스트 드라이버의 잘못이었다.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;구글의 자율 주행 모드는 사고가 난 상황에 작동 중이었다. (다른 사고에서는 구글의 테스트 드라이버 들이 수동운전 모드로 변경했었다.) 버스는 시속 15마일로, 자율주행차는 시속 2마일로 주행 중이었다. 보고서에 따르면 “버스가 다가오는 것을 왼쪽 사이드 미러로 보았습니다. 하지만 버스가 멈추거나 구글의 차가 지나가도록 속도를 늦춰줄 것으로 생각했습니다.” 라고 테스트 드라이버가 말했다. 부상자는 없었다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://static.googleusercontent.com/media/www.google.com/ko//selfdrivingcar/files/reports/report-0216.pdf&quot;&gt;구글의 자율주행 자동차 프로젝트 월간 보고서&lt;/a&gt; 도 확인해보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2월 14일 우리의 차는 자율주행 중이었고 우회전을 준비 중이었습니다. 하수도관 옆의 모래주머니가 경로를 막고 있는 것을 발견하였고 정지해야 했습니다. 몇몇의 차들이 지나가기를 기다린 후에 우리의 차는 여전히 자율주행모드에서 차선 중심으로 시속 2마일의 속도로 방향을 틀기 시작했습니다. 그리고 이는 시속 15마일로 지나가는 버스의 측면과 충돌을 만들었습니다. 우리 자동차는 다가오는 버스를 확인하였지만 우리가 더 앞에 있었기 때문에 우리에게 양보해줄 것이라 예상했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;바둑 덕분에 인공지능에 대한 관심이 높아지고 있지만, 사실 아마존에서는 상품추천이나 배송시스템에 인공지능을 사용하고 있는데다가 자율 주행차도 꾸준히 발전되어 왔다. 한동안 묻혀있던 뉴스들이 많이 발견되지 않을까 싶다.&lt;/p&gt;</content><author><name>Hong Wonjun</name></author><category term="Self-Driving," /><category term="AI" /><summary type="html">출처: On the road - Google Self-Driving Car Project</summary></entry><entry><title type="html">(번역) Dan 에게 물어봐! - 맥주와 기저귀의 판매량 사이의 관계를 데이터 마이닝을 이용하여 찾아낸 이야기의 “진실”은 무엇인가?</title><link href="https//hongwonjun.github.io/data/2016/02/23/%EB%A7%A5%EC%A3%BC%EC%99%80-%EA%B8%B0%EC%A0%80%EA%B7%80.html" rel="alternate" type="text/html" title="(번역) Dan 에게 물어봐! - 맥주와 기저귀의 판매량 사이의 관계를 데이터 마이닝을 이용하여 찾아낸 이야기의 &quot;진실&quot;은 무엇인가?" /><published>2016-02-23T00:00:00+09:00</published><updated>2016-02-23T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/02/23/%EB%A7%A5%EC%A3%BC%EC%99%80-%EA%B8%B0%EC%A0%80%EA%B7%80</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/02/23/%EB%A7%A5%EC%A3%BC%EC%99%80-%EA%B8%B0%EC%A0%80%EA%B7%80.html">&lt;p&gt;이 글은 University of Northern Iowa 의 교수이자 JMWAIS.org 와 DSSResources.com 에디터이신 &lt;a href=&quot;http://www.dssresources.com/vita/djphomepage.html&quot;&gt;Daniel J. Power&lt;/a&gt; 교수님에게 허락을 받아 &lt;a href=&quot;http://www.dssresources.com/newsletters/66.php&quot;&gt;2002년 11월 10일자 DSS News&lt;/a&gt; 중 &lt;em&gt;Ask Dan! - What is the “true story” about data mining, beer and diapers?&lt;/em&gt; 를 번역한 것입니다. 첫 번역이라 오역이 많을 수 있으니 가급적이면 원문을 참고 바랍니다.&lt;/p&gt;
+
+&lt;p&gt;시간을 내어 번역을 도와주신 randomness 에게 감사의 말을 전합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dan-에게-물어봐-by-daniel-j-power&quot;&gt;Dan 에게 물어봐! by Daniel J. Power&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;맥주와 기저귀의 판매량 사이의 관계를 데이터 마이닝을 이용하여 찾아낸 이야기의 “진실”은 무엇인가?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;이것은 유명한 의사결정지원의 예와 관련하여 자주 거론되는 질문 중 하나이다. 데이터 마이닝을 이용하여 맥주와 기저귀의 상관관계를 찾아내는 이 이야기는 이야기되고 다시 이야기되면서 다른 전설이나 “터무니 없이 과장된 이야기” 처럼 내용이 덧붙여졌다. 그 이야기를 처음 들었을 때가 정확히 기억나지는 않지만 나 또한 이 이야기를 자주 언급했고 스스로 내용을 더 추가하기도 하였다. 아래는 이 이야기의 여러 버전들이다.&lt;/p&gt;
+
+&lt;p&gt;The Financial Times of London (1996.02.07) 의 기사다. “데이터 마이닝의 활용분야를 논할 때 자주 인용되는 예는 맥주 브랜드와 아기 기저귀 브랜드 사이에 많은 고객들의 강한 상관관계를 찾은 미국의 큰 슈퍼마켓 체인점의 케이스다. 기저귀를 구입한 대부분의 손님들이 맥주도 구매하였다. 세계에서 가설을 가장 잘 세우는 사람이었어도 이 상관관계를 유추하기는 어려웠겠지만 데이터 마이닝은 이 관계가 실재한다는 것을 보여주었고 판매점은 제품들을 선반에서 가까이 이동시킴으로써 이를 활용 할 수 있었다.”&lt;/p&gt;
+
+&lt;p&gt;UCLA 의 Bill Palace (1996년 여름) 는 그의 웹 강의 노트를 이렇게 작성했다. “데이터 마이닝의 활용 예시로 중서부의 식료품 체인이 오라클 소프트웨어의 데이터 마이닝 기능을 활용하여 그 지역의 구매 패턴을 분석한 사례가 있습니다. 그들은 남자들이 목요일과 토요일에 기저귀를 살 때면 맥주도 사는 경향이 있다는 것을 찾아내었습니다. 뿐만 아니라 분석은 사람들이 일반적으로 토요일에 장을 보는 것도 보고 목요일에는 몇몇 가지의 상품만을 구매하는 것을 보여주었습니다. 그 소매업자는 다가오는 주말을 위해서 맥주를 매입해야 한다고 판단을 내렸습니다. 그 식료품 체인은 이 새롭게 발견된 정보를 아마 수익을 증가시키는 다양한 방법으로 이용할 수 있었습니다. 예를 들자면 그들은 맥주를 기저귀와 가까운 거리에 비치함으로써 목요일과 같은 매출이 적은 날에도 두 물건이 제 가격에 팔릴 수 있다고 자신할 수 있었습니다.”&lt;/p&gt;
+
+&lt;p&gt;Hermiz 와 Manganaris (1999) 는 이렇게 서술했다. “가장 많이 반복되는 (대부분 조작되었을) 데이터 마이닝 스토리는 장바구니에서 맥주와 기저귀가 같이 나타나는 것을 발견했다는 것이다. 설명은 이러하다. 아빠들이 기저귀 심부름을 왔을 때 종종 그들이 좋아하는 맥주 여섯팩을 보상으로 사간다는 것이다.“&lt;/p&gt;
+
+&lt;p&gt;또한 제8회 연례 버지니아 고등학교 프로그래밍 대회 (2001) 에서는 맥주와 기저귀라는 이름의 문제가 출제되었다. 그 문제설명은 이렇게 시작한다. “상점 주인은 오랫동안 고객의 거래기록을 분석하는 것이 자신의 이익을 증가시킬 수 있음을 발견했다. 예를들어 어떤 상품을 같이 판매되는 횟수가 많은 다른 상품 가까이 두는 것이 이 상품들에 대한 구매를 촉진한다는 것이다. 확실히 우유와 시리얼은 빈번하게 같이 구매가 일어난다. 그러나 어떠한 패턴은 이보다는 덜 명백하다. 예를들어 기저귀와 맥주를 같이 구매하는 경우이다. 주어진 구매기록들에서 함께 구매가 일어나는 상품의 쌍을 찾아라.”&lt;/p&gt;
+
+&lt;p&gt;웹이나 데이터 마이닝 책에서도 이 이야기의 다른 버전들도 찾을 수 있다. 학생들의 질문과 내 스스로의 호기심으로 나는 이 이야기의 진실을 찾기로 결심했다. 2002년 7월 나는 NCR 의 한 부서인 Teradata 에서 후원하는 데이터 마이닝의 과거와 현재, 미래에 대해 생중계하는 인터넷방송에 대하여 미디어 자문을 받았다. 이 인터넷방송은 맥주와 기저귀 연구의 10주년과 데이터 마이닝의 전설이 시작되었음을 기념하고 있었다. 나는 2002년 7월 31일의 라이브 이벤트에는 참석할 수 없었으나 발행된 인터넷방송을 보았고 사회자였던 Teradata 의 Holly Michael 이 2002년 9월에 나에게 당시의 방송 기록을 보내주었다.&lt;/p&gt;
+
+&lt;p&gt;MindMeld, Inc. 의 CEO 인 Thomas Blischok 는 네 명의 토론자 중 한명이었다. Blischok 은 맥주와 기저귀의 전설이 시작된 원본 연구를 다루었다. Holly Michael 은 이 전설을 요약하면서 인터넷방송을 시작했다. 그녀의 이야기를 이러했다. “대형컴퓨터가 매장 구매 데이터를 조사하는 중이었다. 여기서 오후의 매매기록에서 맥주와 기저귀 간에 예상보다 높은 생소한 상관관계를 찾아냈고 추측하건대 이 데이터는 젊은 아빠들이 직장에서 집으로 가는 길에 유아용품을 사가는 스스로를 위해서 무엇인가를 구매한 것 같다는 것을 시사하였다. 소매업자들은 이 상관관계를 듣고 두 제품의 구매를 촉진하기 위해 위치를 재정렬하였다고 한다.”&lt;/p&gt;
+
+&lt;p&gt;Holly 는 1990년대 초반 Oslo Drug 의 데이터 마이닝 프로젝트를 설명한 Thom Blischok 에게 순서를 넘겼다. Thom 은 Oslo Drug 가 데이터 마이닝에서 선구적인 회사 중 하나임을 언급하였다. 그는 “우리가 그들 조직의 고위 경영팀과 협력하는 경우 우리는 그들이 완전히 새로운 판매전략을 수립하도록 돕습니다. 기존의 판매전략은 바이어에 의해 구입되고 판매되었던 것에 반하여 우리는 상점에서 팔리는 것을 사는데 초점을 맞춘 판매 전략을 제시하였습니다.” 라고 말했다.&lt;/p&gt;
+
+&lt;p&gt;Blischok 에 따르면 “그들의 고위 경영팀은 비전이 있었고 그들의 비전은 소비자의 수요를 중심으로 매장을 재창조하는 전략을 중축으로 하고 있었습니다. 이것이 전설의 시작이죠. 우리는 120만개의 장바구니를 분석했는데 여기서 장바구니란 당신이 실제 카트에 넣고 계산대에서 계산한 물건들을 말합니다. 그리고 이것들은 약 25개의 점포에서의 거래기록에 해당하죠. NCR 입장에서의 우리의 전략은 주어진 쇼핑 환경에서 사람들이 무엇을 사는지 찾아내는 것이었습니다.”&lt;/p&gt;
+
+&lt;p&gt;전설에 대한 이야기는? Blischok 가 말했다. “그래요, 이야기로 다시 돌아가자면, 우리는 소비자들이 오후 5시에서 7시 사이에 맥주와 기저귀를 사는 것을 발견했습니다. 이것은 소매업자들이 그 전까지 본적이 없는 인사이트였습니다. 그리고 이건 우리가 왜곡한게 아니라 실제로 일어난 일이었습니다. 이러한 초기 개척 과정에서 Osco 가 발견한 것은 모든 결정에서 소비자의 선호도를 중심으로 기반하여 매장을 다시 디자인하는 것이 가능하다는 것이었습니다. 그 경영팀은 이를 수용하고  변화의 기회를 얻었음을 쉽게 이해했습니다. 하지만 실제로 그들이 맥주와 기저귀의 관계를 이용하여 따로 조치한 것은 없습니다. 대신에 그들이 한 것은 그들의 상품기획 과정의 재설계를 보수적으로 시작했다는 겁니다.”&lt;/p&gt;
+
+&lt;p&gt;샌디에고에 있는 Teradata 데이터 마이닝 랩의 임원인 Mike Grote 은 Blischok 의 발표에 2002년의 데이터 마이닝을 덧붙였다. Mike 는 이렇게 이야기 했다. “우리가 오늘 기자회견의 목적으로 활용하기 위해 맥주와 기저귀의 이야기를 생각한다면 여기에는 틀림없이 오늘날의 데이터 마이닝 기술의 수준에 반하는 한계가 존재합니다. 최신식의 도구와 쿼리 생성 도구의 맥락에서 생각했을 때 Thom 과 그의 팀은 훨씬 더 많은 수의 거래기록을 확인해볼 수 있었고 함께 일어나는 다른 특별한 구매 기록을 찾았을 것입니다. 그래서 무엇을 보여주고 우리는 어떻게 오늘날의 문제 접근 방식과 대조할 것인가요? 글쎄요, 아마도 우리가 오늘날 그 문제를 다루는 것은 우리가 사건이 같이 발생하는지 확인할 수 있게 해주는 것뿐만 아니라 하나의 사건이 다른 사건이 일어날 가능성을 극적으로 증가시키거나 하나의 구매가 극적으로 다른 구매가 일어날 기회를 극적으로 증가시키는 결정을 할 수 있도록 해주는 몇몇의 추가적인 툴을 사용하는 것입니다.“&lt;/p&gt;
+
+&lt;p&gt;모든 사람이 위 설명에 동의하는가? YES and NO! John Earle 는 &lt;a href=&quot;http://www.riggs.com&quot;&gt;www.riggs.com&lt;/a&gt; 에 1998년 12월 21일에 투고했다. “나는 Teradata 에서 일했고 신화(myth) 가 시작되는데 기여한 사람이다. 우리는 Osco Drugs 를 위해 데이터 분석을 해왔었다… 함께 구매가 일어나는 상품간의 연관성을 찾고 있었고 우리는 연관성에 영향을 어떻게 미치는지 보기 위해 상점에서의 상품 이동에 따른 테스트를 제안했다. …우리의 두려움을 모르는 리더인 Thom Blischok 는 전망에 대해 이야기 할 때와 언론에서 실제 관계성 실험과 우리의 가설에 구분을 두지 않았다. 우리의 일은 시스템의 가치를 파는 것이었다. 판매에 있어서 사실은 종종 미신에 의해 흐려지기 마련이다.”&lt;/p&gt;
+
+&lt;p&gt;HP Labs 의 Tom Fawcett 는 2000년 6월 14일 (수) 에 KDnuggets.com 에 “기저귀와 맥주” 의 기원에 대하여 글을 썼다. Fawcett 는 Lounette 의 예의 기원에 대한 제 3자로서의 설명을 Ronny Kohavi 를 통하여 제공했다. 그의 글은 Thom Blischok 을 반박했다. “기저귀와 맥주의 예는 상상에 불과하다. 내가 알고 있는 한에서 그들이 분석한 어떤 데이터도 이를 지원한 적이 없다.”&lt;/p&gt;
+
+&lt;p&gt;Ronny Kohavi 는 2000년 7월 6일에 &lt;a href=&quot;http://www.kdnuggets.com&quot;&gt;www.kdnuggets.com&lt;/a&gt; 의 이메일에 썼다. “1998년 ICML 의 초대 강연에서 맥주와 기저귀의 예를 더 추적해보았다. &lt;a href=&quot;http://robotics.stanford.edu/~ronnyk/chasm.pdf&quot;&gt;http://robotics.stanford.edu/~ronnyk/chasm.pdf&lt;/a&gt; 의 21번째 슬라이드를 확인해보라. 기본적으로 나는 Blischok 의 그룹에서 쿼리를 실행했던 사람을 찾았다. K. Heath 는 특히 수익적인 유아용품을 포함한 두 개의 아이템 쌍을 찾기 위해 SQL 의 self join 을 실행했다 (1990). 그녀는 50개 매장의 하루간 데이터에서 맥주와 기저귀의 패턴을 찾아냈다. 그녀와 이야기할 때 그녀는 이 패턴을 중요하게 생각하지는 않지만 흥미롭다고 얘기했다.”&lt;/p&gt;
+
+&lt;p&gt;그래서 사실은 무엇인가? 1992년 Teradata 리테일 컨설팅 그룹의 매니저인 Thomas Blischok 와 그의 직원들은 25개의 Osco Drug 매장에서 나온 120만개의 구매기록을 분석했다. 데이터베이스 쿼리는 연관성을 발견하기 위해 개발되었다. 그 분석결과는 “오후 5시에서 7시 사이의 소비자는 맥주와 기저귀를 구매한다는 것을 발견했다.” 였다. Osco 의 매니저는 선반에서 제품을 가까이 이동시키는 식으로 맥주와 기저귀의 관계를 이용하지 않았다. 이 쿼리 도구를 이용한 의사결정 지원 연구는 연관성을 찾아내기 위해 실시되었다. 이야기의 진실은 전설과 비교하여 꽤나 볼품없다.&lt;/p&gt;
+
+&lt;p&gt;혹시 누군가 당신에게 “데이터 마이닝, 맥주와 기저귀” 에 대한 이야기를 물어본다면 당신은 이제 사실을 알고 있다. 대부분의 사람들이 말하는 그 이야기는 사실 소설이나 전설이다. 당신은 계속해서 그 이야기를 말할 수 있으나 당신이 어떻게 말할지라도 “데이터 마이닝, 맥주와 기저귀” 의 이야기는 현재 데이터마이닝 기술의 의사결정 지원의 가능성에 대한 좋은 예가 아니라는 것을 기억해야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Brand, E. and R. Gerritsen, Association and Sequencing, February 1998, URL &lt;a href=&quot;http://www.dbmsmag.com/9807m03.html&quot;&gt;http://www.dbmsmag.com/9807m03.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Cohen, N., Data Mining: Nagging that it really adds up, 2000, URL &lt;a href=&quot;http://www.open-mag.com/features/Vol_16/datamining/datamining.htm&quot;&gt;http://www.open-mag.com/features/Vol_16/datamining/datamining.htm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Fawcett, Tom, Origin of “diapers and beer”, posted at KDnuggets.com, Wednesday, June 14, 2000, URL &lt;a href=&quot;http://www.kdnuggets.com/news/2000/n13/23i.html&quot;&gt;http://www.kdnuggets.com/news/2000/n13/23i.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Fu, X., J. Budzik, K. J. Hammond, Mining Navigation History for Recommendation, Infolab, Northwestern University, in Proceedings of Intelligent User Interfaces 2000, ACM Press, 2000, URL &lt;a href=&quot;http://dent.infolab.nwu.edu/infolab/downloads/papers/paper10081.pdf&quot;&gt;http://dent.infolab.nwu.edu/infolab/downloads/papers/paper10081.pdf&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Hermiz, K. and S. Manganaris, Beyond Beer and Diapers, DB2 Magazine, Winter 1999, URL &lt;a href=&quot;http://www.db2mag.com:8080/db_area/archives/1999/q4/miner.shtml&quot;&gt;http://www.db2mag.com:8080/db_area/archives/1999/q4/miner.shtml&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Kohavi, R., Origin of “diapers and beer”, email dated July 6, 2000, &lt;a href=&quot;http://www.kdnuggets.com/news/2000/n14/8i.html&quot;&gt;http://www.kdnuggets.com/news/2000/n14/8i.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Michael, H., Transcript of the Beer and Diapers webcast, email, September 3, 2002.&lt;/li&gt;
+  &lt;li&gt;Palace, Bill, Data Mining, a technology note prepared for Management 274A, Anderson Graduate School of Management at UCLA, Spring 1996, URL &lt;a href=&quot;http://www.anderson.ucla.edu/faculty/jason.frand/teacher/technologies/palace/index.htm&quot;&gt;http://www.anderson.ucla.edu/faculty/jason.frand/teacher/technologies/palace/index.htm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Riggs Eckelberry’s OF INTEREST, More On Diapers and Beer, Monday, December 21, 1998, URL &lt;a href=&quot;http://www.riggs.com/archives/1998_12_01_OIarchive.html&quot;&gt;http://www.riggs.com/archives/1998_12_01_OIarchive.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Teradata Webcast, Beyond Beer and Diapers - The Origins and Future of Data Mining, archived 7/31/2002 at Teradata.com.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Hong Wonjun</name></author><category term="data" /><summary type="html">이 글은 University of Northern Iowa 의 교수이자 JMWAIS.org 와 DSSResources.com 에디터이신 Daniel J. Power 교수님에게 허락을 받아 2002년 11월 10일자 DSS News 중 Ask Dan! - What is the “true story” about data mining, beer and diapers? 를 번역한 것입니다. 첫 번역이라 오역이 많을 수 있으니 가급적이면 원문을 참고 바랍니다.</summary></entry><entry><title type="html">Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기</title><link href="https//hongwonjun.github.io/python/2016/02/09/flask-template-comma.html" rel="alternate" type="text/html" title="Flask - Template page 에서 숫자 세자리마다 comma (,) 추가하기" /><published>2016-02-09T00:00:00+09:00</published><updated>2016-02-09T00:00:00+09:00</updated><id>https//hongwonjun.github.io/python/2016/02/09/flask-template-comma</id><content type="html" xml:base="https//hongwonjun.github.io/python/2016/02/09/flask-template-comma.html">&lt;p&gt;Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다.&lt;/p&gt;
+
+&lt;p&gt;미리 서버쪽에서 string 으로 변환하는 경우도 있으나 template page 에서도 format function 을 사용하여 변환할 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#123;&amp;amp;#123;'{0:,.1f}'.format(value)&amp;amp;#125;&amp;amp;#125;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;위와 같이 사용하는 경우 3자리마다 comma(,) 를 출력하고 소수점 1자리까지 출력한다.&lt;/p&gt;</content><author><name>Hong Wonjun</name></author><category term="python," /><category term="flask" /><summary type="html">Flask 에서 view page (template) 에서 숫자를 출력하는 경우 3자리마다 comma(,) 를 표시해줘야 하는 경우가 있다.</summary></entry><entry><title type="html">Python - Flask 에서 Chart.js Legend 구현하기</title><link href="https//hongwonjun.github.io/python/2016/02/09/flask-chartjs-legend.html" rel="alternate" type="text/html" title="Python - Flask 에서 Chart.js Legend 구현하기" /><published>2016-02-09T00:00:00+09:00</published><updated>2016-02-09T00:00:00+09:00</updated><id>https//hongwonjun.github.io/python/2016/02/09/flask-chartjs-legend</id><content type="html" xml:base="https//hongwonjun.github.io/python/2016/02/09/flask-chartjs-legend.html">&lt;p&gt;웹에 그래프를 그리는 Javascript Library 중에 &lt;a href=&quot;http://www.chartjs.org&quot;&gt;Chart.js&lt;/a&gt; 가 있다.
+꽤 심플해서 사용하는데 legend 이 없어서 검색을 해보니 아래와 같은 방식으로 legend 을 구현한다.
+Chart Options 에 아래 내용을 추가한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//String - A legend template&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;legendTemplate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;lt;ul class=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;lt;%=name.toLowerCase()%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;span style=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;background-color:&amp;amp;lt;%=datasets[i].strokeColor%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;그래프 생성 후 아래 코드를 호출한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;myLineChart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;generateLegend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// =&amp;amp;gt; returns HTML string of a legend for this chart&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;위와 같이 호출하는 경우 HTML 코드가 반환되기 때문에 아래와 같이 정해진 id 에 반환된 HTML 코드를 넣으면 된다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markup&quot; data-lang=&quot;markup&quot;&gt;&amp;amp;lt;div id=&quot;legend&quot;&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myLineChart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;generateLegend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;이 때 css 를 아래와 같이 입력해두면 작은 사각형으로 그려낼 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#legend&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;11px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;11px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;하지만 이를 Flask 에서 실행하는 경우 아래와 같은 에러가 발생한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clike&quot; data-lang=&quot;clike&quot;&gt;&quot;TemplateSyntaxError: tag name expected&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;jinja2 와의 문법 충돌 때문인데, {% 와 %} 를 {\% 와 \%} 로 수정해야 한다. 즉, 위 코드를 아래와 같이 수정하면 된다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;legendTemplate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;lt;ul class=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;lt;%=name.toLowerCase()%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;span style=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;background-color:&amp;amp;lt;%=datasets[i].lineColor%&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Reference&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;[Chart.js&lt;/td&gt;
+          &lt;td&gt;Documentation](http://www.chartjs.org/docs/)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jsfiddle.net/vrwjfg9z/&quot;&gt;Chart.js Legend Customization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/26509287/templatesyntaxerror-tag-name-expected&quot;&gt;jinja2 - TemplateSyntaxError: tag name expected&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Hong Wonjun</name></author><category term="python," /><category term="flask," /><category term="chart.js" /><summary type="html">웹에 그래프를 그리는 Javascript Library 중에 Chart.js 가 있다. 꽤 심플해서 사용하는데 legend 이 없어서 검색을 해보니 아래와 같은 방식으로 legend 을 구현한다. Chart Options 에 아래 내용을 추가한다.</summary></entry><entry><title type="html">빅데이터만 믿지마?</title><link href="https//hongwonjun.github.io/data/2016/02/03/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A7%8C-%EB%AF%BF%EC%A7%80%EB%A7%88.html" rel="alternate" type="text/html" title="빅데이터만 믿지마?" /><published>2016-02-03T00:00:00+09:00</published><updated>2016-02-03T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/02/03/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A7%8C-%EB%AF%BF%EC%A7%80%EB%A7%88</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/02/03/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A7%8C-%EB%AF%BF%EC%A7%80%EB%A7%88.html">&lt;p&gt;&lt;a href=&quot;http://news.joins.com/article/19513378&quot;&gt;중앙일보 - 궁금한 화요일. 데이터가 다 말해주진 않는다&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h2 id=&quot;넷플릭스는-알고-아마존은-몰랐다--빅데이터만-믿지-마&quot;&gt;넷플릭스는 알고 아마존은 몰랐다 … 빅데이터만 믿지 마&lt;/h2&gt;
+  &lt;p&gt;넷플릭스의 답은 간단했다. “그동안 축적한 방대한 사용자 데이터를 분석한 결과 데이비드 핀처가 감독하고 케빈 스페이시가 주연을 맡은 오리지널 시리즈라면 반드시 성공할 것이라고 확신했다.” 이에 많은 사람이 ‘데이터가 답이다. 데이터가 우리를 구원할 것’이라며 열광했다. &lt;br /&gt;
+…&lt;br /&gt;
+하지만 모두가 넷플릭스의 대답을 곧이곧대로 믿는 것은 아니다. 최근 열린 테드 톡(TED Talk)에서 데이터 과학자인 제바스티안 베르니케(Sebastian Wernicke)는 이렇게 반문했다. “사용자 데이터를 다루는 데 둘째가라면 서러워 할 아마존이 많은 양의 데이터를 연구해 만든 오리지널 시리즈 ‘알파 하우스’는 왜 실패했는가.” 
+넷플릭스 오리지널 시리즈들의 진정한 성공 요인은 사람에게 있지 데이터에 있는 것이 아니라는 얘기다.&lt;br /&gt;
+…&lt;br /&gt;
+그런 막중한 책임을 진 사람이라면 대개는 철저하게 데이터에 의존해 아주 조심스럽게 일을 진행했을 것이다.&lt;br /&gt;
+하지만 아마존과 넷플릭스의 전략은 바로 그 지점에서부터 갈라졌다. 아마존은 8개 프로그램의 파일럿 제작물을 만들어 무료로 공개한 후 시청자의 반응을 데이터로 확인해 가면서 조심스럽게 계속 방영할 작품을 고른 반면, 넷플릭스는 작품이 결정되자마자 한 시즌 13편을 한꺼번에 제작하기로 결정했다.&lt;br /&gt;
+…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;재미있는 비교이다. 하지만 아마존의 방법이 빅데이터만 믿은 방법이 아니며 넷플릭스의 방법이 빅데이터에 의존하지 않은 방법도 아니다.&lt;/p&gt;
+
+&lt;p&gt;글 자체에서도 볼 수 있듯이 넷플릭스에서는 &lt;strong&gt;감독과 주연을 확보하면 성공할 것이라는 것&lt;/strong&gt;을 데이터 분석 결과로 알아낼 수 있었고 거기에 맞는 행동을 했을 뿐이다. 반대로 아마존에서는 그런 결과를 얻지 못했기 때문에 파일럿 제작물을 만들었을 수도 있다. (글의 주장과는 반대로 성공 요인이 데이터에 있을 수도 있다는 얘기다.)&lt;/p&gt;
+
+&lt;p&gt;분명히 데이터와 관련된 일에 대한 성공여부는 사람에게 달려있다. 하지만 이러한 예시에는 동의하기 힘들다.&lt;/p&gt;</content><author><name>Hong Wonjun</name></author><category term="data" /><summary type="html">중앙일보 - 궁금한 화요일. 데이터가 다 말해주진 않는다</summary></entry><entry><title type="html">Python 에서 Tajo 사용하기 #2 Query 결과값 중 숫자를 연산에 사용하기</title><link href="https//hongwonjun.github.io/python/2016/02/01/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-2.html" rel="alternate" type="text/html" title="Python 에서 Tajo 사용하기 &amp;#35;2 Query 결과값 중 숫자를 연산에 사용하기" /><published>2016-02-01T00:00:00+09:00</published><updated>2016-02-01T00:00:00+09:00</updated><id>https//hongwonjun.github.io/python/2016/02/01/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-2</id><content type="html" xml:base="https//hongwonjun.github.io/python/2016/02/01/Python-%EC%97%90%EC%84%9C-Tajo-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-2.html">&lt;h3 id=&quot;query-를-실행했다-그리고&quot;&gt;Query 를 실행했다 그리고&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;이전 포스팅 마지막에 실행한 쿼리를 보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;select * from table1&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetchall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;결과를 python 에서 사용해보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;이런 경우 아래와 같은 Error 문구를 볼 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unsupported&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operand&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'java.lang.Long'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'java.lang.Long'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;문제는&quot;&gt;문제는&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;문제는 query 의 결과값이 숫자인 경우 아래와 같은 형식으로 리턴되기 때문이다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;jpype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_jclass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;해결해보자&quot;&gt;해결해보자&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;사실 해결책은 간단하다. 결국 TAJO 의 결과 값이 JDBC 를 통해서 오기 때문인데 .value 로 그 값을 받아올 수 있다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'long'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;첫 코드를 수정해보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 글은 현재 일하고 있는 라인웍스의 블로그 에 기고한 글로 원문의 주소는 아래와 같다.&lt;/li&gt;
+  &lt;li&gt;http://linewalks.com/archives/1104&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Hong Wonjun</name></author><category term="data," /><category term="tajo," /><category term="python" /><summary type="html">Query 를 실행했다 그리고</summary></entry><entry><title type="html">데이터와 관련하여 기업들이 공개한 기술은 어떤게 있을까?</title><link href="https//hongwonjun.github.io/data/2016/01/30/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EA%B4%80%EB%A0%A8%ED%95%98%EC%97%AC-%EA%B8%B0%EC%97%85%EB%93%A4%EC%9D%B4-%EA%B3%B5%EA%B0%9C%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%9D%80-%EC%96%B4%EB%96%A4%EA%B2%8C-%EC%9E%88%EC%9D%84%EA%B9%8C.html" rel="alternate" type="text/html" title="데이터와 관련하여 기업들이 공개한 기술은 어떤게 있을까?" /><published>2016-01-30T00:00:00+09:00</published><updated>2016-01-30T00:00:00+09:00</updated><id>https//hongwonjun.github.io/data/2016/01/30/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EA%B4%80%EB%A0%A8%ED%95%98%EC%97%AC-%EA%B8%B0%EC%97%85%EB%93%A4%EC%9D%B4-%EA%B3%B5%EA%B0%9C%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%9D%80-%EC%96%B4%EB%96%A4%EA%B2%8C-%EC%9E%88%EC%9D%84%EA%B9%8C</id><content type="html" xml:base="https//hongwonjun.github.io/data/2016/01/30/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EA%B4%80%EB%A0%A8%ED%95%98%EC%97%AC-%EA%B8%B0%EC%97%85%EB%93%A4%EC%9D%B4-%EA%B3%B5%EA%B0%9C%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%9D%80-%EC%96%B4%EB%96%A4%EA%B2%8C-%EC%9E%88%EC%9D%84%EA%B9%8C.html">&lt;p&gt;작년에는 필요한 알고리즘은 직접 개발하여 사용했었는데 회사가 발전해감에 따라서 점점 시스템을 구축할 필요를 느끼고 있어서 기존에 다른 기업들이 공개한 데이터와 관련된 기술들을 찾아보았다.&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;a href=&quot;http://twitter.com&quot;&gt;트위터&lt;/a&gt; 에서는 2011년에 &lt;a href=&quot;http://getbootstrap.com/about/&quot;&gt;Bootstrap&lt;/a&gt; 외에도 실시간 분석 분산 시스템 인 &lt;a href=&quot;http://storm.apache.org/&quot;&gt;Storm&lt;/a&gt; 을 공개했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.twitter.com/2011/a-storm-is-coming-more-details-and-plans-for-release&quot;&gt;(2011.08.04)A Storm is coming: more details and plans for release&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://d2.naver.com/helloworld/484148&quot;&gt;(2013.09.06)트위터 Storm 소개&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2013년에는 &lt;a href=&quot;http://storm.apache.org/&quot;&gt;Storm&lt;/a&gt; 과 &lt;a href=&quot;https://hadoop.apache.org/&quot;&gt;Hadoop&lt;/a&gt; 을 결합한 &lt;a href=&quot;https://github.com/twitter/summingbird&quot;&gt;Summingbird&lt;/a&gt; 을 추가로 공개하였다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird&quot;&gt;(2013.09.03)Streaming MapReduce with Summingbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2014년에는 &lt;a href=&quot;http://google.com&quot;&gt;구글&lt;/a&gt; 에서 &lt;a href=&quot;http://research.google.com/pubs/pub42851.html&quot;&gt;Mesa&lt;/a&gt; 라는 highly scalable analytic data warehousing system 을 &lt;a href=&quot;http://www.vldb.org/2014/accepted_papers.html&quot;&gt;VLDB 2014&lt;/a&gt; 에서 발표했다.&lt;/p&gt;
+
+&lt;p&gt;2015년에는 &lt;a href=&quot;http://facebook.com&quot;&gt;페이스북&lt;/a&gt; 필두로 많은 기업들이 머신러닝과 관련된 프로젝트들을 오픈소스로 공개하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://facebook.com&quot;&gt;페이스북&lt;/a&gt; 은 1월에 머신러닝 알고리즘을 위한 프레임웍인 &lt;a href=&quot;http://torch.ch/&quot;&gt;Torch&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/torch/torch7&quot;&gt;오픈소스로 공개&lt;/a&gt;했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Torch is a scientific computing framework with wide support for machine learning algorithms. It is easy to use and efficient, thanks to an easy and fast scripting language, LuaJIT, and an underlying C/CUDA implementation. (http://torch.ch/)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://research.facebook.com/blog/fair-open-sources-deep-learning-modules-for-torch/&quot;&gt;FAIR open sources deep-learning modules for Torch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://linkedin.com&quot;&gt;링크드인&lt;/a&gt; 에서는 2014년 9월에 공개했었던 실시간 분석기술인 &lt;a href=&quot;https://github.com/linkedin/pinot&quot;&gt;Pinot&lt;/a&gt; 을 오픈소스로 전환했다.&lt;/p&gt;
+
+&lt;p&gt;아래는 Pinot 에 대한 소개이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pinot is a realtime distributed OLAP datastore, which is used at LinkedIn to deliver scalable real time analytics with low latency. It can ingest data from offline data sources (such as Hadoop and flat files) as well as online sources (such as Kafka). Pinot is designed to scale horizontally. (https://github.com/linkedin/pinot)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 외에도 &lt;a href=&quot;https://linkedin.github.io/&quot;&gt;LinkedIn Open Source&lt;/a&gt; 에 지속적으로 활동하고 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://engineering.linkedin.com/analytics/real-time-analytics-massive-scale-pinot&quot;&gt;Real-time Analytics at Massive Scale with Pinot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;같은 해 11월에는 &lt;a href=&quot;http://google.com&quot;&gt;구글&lt;/a&gt; 이 머신러닝 라이브러리 &lt;a href=&quot;https://www.tensorflow.org/&quot;&gt;Tensorflow&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/tensorflow/tensorflow&quot;&gt;오픈소스로 공개&lt;/a&gt;했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TensorFlow™ is an open source software library for numerical computation using data flow graphs. (https://www.tensorflow.org/)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://googleblog.blogspot.kr/2015/11/tensorflow-smarter-machine-learning-for.html&quot;&gt;TensorFlow: smarter machine learning, for everyone &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;몇 일 지나지 않아서 &lt;a href=&quot;http://www.microsoft.com/&quot;&gt;마이크로소프트&lt;/a&gt; 도 분산 머신러닝 툴깃인 &lt;a href=&quot;http://www.dmtk.io/&quot;&gt;DMTK&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/Microsoft/DMTK&quot;&gt;오픈소스로 공개&lt;/a&gt; 했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blogs.technet.com/b/inside_microsoft_research/archive/2015/11/12/microsoft-open-sources-distributed-machine-learning-toolkit-efficient-big-data-research.aspx&quot;&gt;Microsoft open sources Distributed Machine Learning Toolkit for more efficient big data research&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;비슷한 시기에 &lt;a href=&quot;http://www.samsung.com/sec/aboutsamsung/&quot;&gt;삼성전자&lt;/a&gt; 에서도 딥러닝을 위한 분산 플랫폼인 &lt;a href=&quot;https://velesnet.ml/&quot;&gt;VELES&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/Samsung/veles.znicz&quot;&gt;오픈소스로 공개&lt;/a&gt; 했는데 해당 기사를 찾지 못하겠다.&lt;/p&gt;
+
+&lt;p&gt;12월에는 &lt;a href=&quot;http://facebook.com&quot;&gt;페이스북&lt;/a&gt; 에서 ‘Big Sur’ 라는 neural network 을 위한 GPU-based 시스템의 디자인을 공개했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.facebook.com/posts/1687861518126048/facebook-to-open-source-ai-hardware-design/&quot;&gt;Facebook to open-source AI hardware design&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2016년에도 기술공개가 계속해서 일어나고 있는데 &lt;a href=&quot;http://www.microsoft.com/&quot;&gt;마이크로소프트&lt;/a&gt; 가 Computational Network Toolkit 인 &lt;a href=&quot;http://www.cntk.ai/&quot;&gt;CNTK&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/Microsoft/CNTK&quot;&gt;오프소스로 공개&lt;/a&gt;했다. 설명으로 봐서는 기존에 공개한 &lt;a href=&quot;http://www.dmtk.io/&quot;&gt;DMTK&lt;/a&gt; 와는 다른 점은 딥러닝에 최적화되었다는 것 같은데 나중에 한번 점검해봐야겠다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CNTK (http://www.cntk.ai/), the Computational Network Toolkit by Microsoft Research, is a unified deep-learning toolkit that describes neural networks as a series of computational steps via a directed graph. (https://github.com/Microsoft/CNTK)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blogs.microsoft.com/next/2016/01/25/microsoft-releases-cntk-its-open-source-deep-learning-toolkit-on-github/&quot;&gt;Microsoft releases CNTK, its open source deep learning toolkit, on GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;중국의 검색엔진 회사인 &lt;a href=&quot;http://www.baidu.com/&quot;&gt;바이두&lt;/a&gt; 에서도 오픈소스 AI 소프트웨어인 &lt;a href=&quot;https://github.com/baidu-research/warp-ctc&quot;&gt;Warp-CTC&lt;/a&gt; 를 공개했다. 설명을 보면 음성인식에 특화된 딥러닝 기술로 보인다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Today Baidu’s Silicon Valley AI Lab (SVAIL) released Warp-CTC, open source software for the machine learning community. Warp-CTC can be used to solve supervised problems that map an input sequence to an output sequence, such as speech recognition. (http://research.baidu.com/warp-ctc/)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://research.baidu.com/warp-ctc/&quot;&gt;Baidu’s Silicon Valley AI Lab Releases Warp-CTC, Open Source AI Software&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;야후에서는 데이터를 공개했다. 관련하여 &lt;a href=&quot;http://hongwonjun.me/post/137654529838/yahoo-releases-the-largest-ever-machine-learning&quot;&gt;포스팅&lt;/a&gt;을 했으니 간단히 요약.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Today, we are proud to announce the public release of the largest-ever machine learning dataset to the research community. The dataset stands at a massive ~110B events (13.5TB uncompressed) of anonymized user-news item interaction data, collected by recording the user-news item interactions of about 20M users from February 2015 to May 2015. (http://yahoo.tumblr.com/post/137282204964/yahoo-releases-the-largest-ever-machine-learning)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yahoo.tumblr.com/post/137282204964/yahoo-releases-the-largest-ever-machine-learning&quot;&gt;Yahoo Releases the Largest-ever Machine Learning Dataset for Researchers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;데이터와 관련된 기술은 아니나 &lt;a href=&quot;http://www.walmart.com/&quot;&gt;월마트&lt;/a&gt; 에서는 기술연구소인 &lt;a href=&quot;http://www.walmartlabs.com/&quot;&gt;월마트 랩스&lt;/a&gt; 를 통하여 DevOps 플래폼인 &lt;a href=&quot;http://oneops.com/index.html&quot;&gt;OneOps&lt;/a&gt; 를 &lt;a href=&quot;https://github.com/oneops&quot;&gt;오픈소스로 공개&lt;/a&gt; 했다. &lt;a href=&quot;https://github.com/walmartlabs&quot;&gt;Walmart Labs 의 Github page&lt;/a&gt; 를 보니 그간 많은 오픈소스 프로젝트를 진행한 것을 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;국내에서는 &lt;a href=&quot;http://www.navercorp.com/ko/index.nhn&quot;&gt;네이버&lt;/a&gt;가 빅데이터 포털로 &lt;a href=&quot;http://datalab.naver.com/&quot;&gt;네이버 데이터랩&lt;/a&gt; 을 오픈했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://platum.kr/archives/53398&quot;&gt;(2016.01.14)네이버, 빅데이터 포털, ‘DATA LAB’ 오픈&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;뒤따라 &lt;a href=&quot;http://www.lgcns.co.kr/&quot;&gt;LG CNS&lt;/a&gt; 에서는 빅데이터 공유 플래폼 이라는 &lt;a href=&quot;https://www.odpia.org/main.odpia&quot;&gt;‘ODPia’(오디피아)&lt;/a&gt; 를 오픈했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.lgcns.com/1018&quot;&gt;(2016.01.17)LG CNS, “빅데이터의 새로운 생태계 만든다!” - 빅데이터 공유 플랫폼 ‘오디피아(ODPia)’ 오픈 -&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;올해 안에 리뷰가 가능할지는 모르겠지만 (앞으로도 계속 오픈될테니) 가능한 관련 기술들은 하나씩 시도해보고 정리해보려고 한다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 글은 현재 일하고 있는 라인웍스의 블로그 에 기고한 글로 원문의 주소는 아래와 같다.&lt;/li&gt;
+  &lt;li&gt;http://linewalks.com/archives/1099&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Hong Wonjun</name></author><category term="data" /><summary type="html">작년에는 필요한 알고리즘은 직접 개발하여 사용했었는데 회사가 발전해감에 따라서 점점 시스템을 구축할 필요를 느끼고 있어서 기존에 다른 기업들이 공개한 데이터와 관련된 기술들을 찾아보았다.</summary></entry></feed>
