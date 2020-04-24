@@ -5,6 +5,8 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-line"></div>
+
+  {% if page.title != 'About' %}
   <div class="post-info">
     {% if page.date %}
       <time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time><br>
@@ -14,6 +16,8 @@ layout: default
     {% endfor %}
   </div>
   <hr><br>
+  {% endif %}
+
   {{ content }}
 
   {% include comment.html %}
