@@ -32,7 +32,7 @@ layout: default
     {% if page == paginator.page %}
       <span>{{ page }}</span>
     {% elsif page == 1 %}
-      <span><a href="{{ site.baseurl }}">{{ page }}</a></span>
+      <span><a href="{{ site.url }}">{{ page }}</a></span>
     {% else %}
       <span><a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></span>
     {% endif %}
