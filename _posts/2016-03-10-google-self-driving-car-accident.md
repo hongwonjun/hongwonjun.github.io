@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "구글의 자율주행차. 첫 사고를 내다."
+title: "구글의 자율주행차. 첫 사고를 내다. - 데이터 신문기사 읽기"
 date: 2016-03-10 00:00:00 +0900
 author: Hong Wonjun
 categories: Data

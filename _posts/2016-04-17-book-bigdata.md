@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "(BOOK) 빅데이터를 말하다."
+title: "(BOOK) 빅데이터를 말하다. - 데이터 도서 읽기"
 date: 2016-04-17 00:00:00 +0900
 author: Hong Wonjun
 categories: Data
