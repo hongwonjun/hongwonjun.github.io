@@ -6,7 +6,6 @@ url:            "https://hongwonjun.github.io"
 
 # Google Analytics
 google_analytics: UA-47713037-1
-disqus: hongwonjun
 
 # Author
 author:
@@ -27,6 +26,7 @@ sass:
 # Gems
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
   # - jemoji #Uncomment this to allow emoji in your post
