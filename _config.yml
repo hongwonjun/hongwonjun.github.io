@@ -3,7 +3,7 @@ title:          Wonjun Blog
 description:    "All about healthcare data."
 baseurl:        ""
 url:            "https://hongwonjun.github.io"
-
+google_fonts:   "Nanum+Gothic:400,700"
 # Google Analytics
 google_analytics: UA-47713037-1
 
