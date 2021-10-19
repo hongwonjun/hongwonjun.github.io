@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NBA 21/22 Fantasy - 02. Preseason"
-date: 2021-10-21 01:45:00 +0900
+date: 2021-10-20 01:25:00 +0900
 author: Hong Wonjun
 categories: NBA-Fantasy
 tags: data, nba, fantasy, basketball
